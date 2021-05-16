@@ -2,6 +2,7 @@ class Pass {
   int id;
   int icon;
   String label;
+  String login;
   String password;
   bool isProtected;
 
@@ -12,6 +13,7 @@ class Pass {
       'id': id,
       'icon': icon,
       'label': label,
+      'login':login,
       'password': password,
       'isProtected': isProtected
     };
@@ -23,6 +25,7 @@ class Pass {
     id = map['id'];
     icon = map['icon'];
     label = map['label'];
+    login = map['login'];
     password = map['password'];
     isProtected = map['isProtected'];
   }
