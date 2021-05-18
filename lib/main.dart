@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import './constants.dart';
 
-void main() => runApp(
-      Constants(child: MyApp()),
-    );
+import './constants.dart';
+import './repository/database_creator.dart';
+
+void main() async {
+  await DatabaseCreator().initDatabase();
+
+  runApp(
+    Constants(
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   @override
