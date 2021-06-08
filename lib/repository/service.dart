@@ -29,7 +29,7 @@ class RepositoryService {
   //   return todo;
   // }
 
-  static Future<void> addPass(Pass todo) async {
+  static Future<void> addPass(Pass pass) async {
     /*final sql = '''INSERT INTO ${DatabaseCreator.todoTable}
     (
       ${DatabaseCreator.id},
