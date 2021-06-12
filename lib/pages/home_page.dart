@@ -42,24 +42,19 @@ class _HomePageState extends State<HomePage> {
           ? buildListView()
           : Center(child: LinearProgressIndicator()),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => showDialog(
-          context: context,
-          builder: (_) => AddPassDialog(
-            () => setState(() {
-              print('callBack');
-              _passList.add((Pass()));
-            }),
-          ),
-        ),
-        // onPressed: () async {
-        //   await RepositoryService.addPass(null);
+          child: Icon(Icons.add),
+          onPressed: () async {
+            Pass _pass = await showDialog(
+              context: context,
+              builder: (_) => AddPassDialog(),
+            );
 
-        //   setState(() {
-        //     _passList.add((Pass()));
-        //   });
-        // }
-      ),
+            if (_pass.password.length > 0) {
+              setState(() {
+                _passList.add(_pass);
+              });
+            }
+          }),
     );
   }
 
