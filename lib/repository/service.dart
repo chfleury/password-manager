@@ -54,12 +54,12 @@ class RepositoryService {
 //   ///      conflictAlgorithm: ConflictAlgorithm.replace,
 //   ///    );
     var values = {
-      DatabaseCreator.icon: 1,
-      DatabaseCreator.hasLogin: false,
-      DatabaseCreator.isProtected: false,
-      DatabaseCreator.label: 'test',
-      DatabaseCreator.password: ' test',
-      DatabaseCreator.login: 'res'
+      DatabaseCreator.icon: pass.icon,
+      DatabaseCreator.hasLogin: pass.hasLogin,
+      DatabaseCreator.isProtected: pass.isProtected,
+      DatabaseCreator.label: pass.label,
+      DatabaseCreator.password: pass.password,
+      DatabaseCreator.login: pass.login,
     };
 
     int id = await db.insert(DatabaseCreator.passTable, values);

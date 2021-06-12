@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     return _passList.length > 0
         ? ListView.builder(
             itemCount: _passList.length,
-            itemBuilder: (ctx, index) => PassCard(),
+            itemBuilder: (ctx, index) => PassCard(_passList[index]),
           )
         : Center(
             child: Text("nothing here yet"),
