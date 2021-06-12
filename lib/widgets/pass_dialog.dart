@@ -4,8 +4,12 @@ class PassDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Center(
-        child: Text('dialog'),
+      child: Form(
+        child: Column(
+          children: [
+            Text("Pass X"),
+          ],
+        ),
       ),
     );
   }

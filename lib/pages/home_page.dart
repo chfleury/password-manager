@@ -15,15 +15,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Pass> _passList = [];
-
+  bool _listLoaded = false;
   @override
   initState() {
-    super.initState();
     _fetchData();
+    super.initState();
   }
 
   _fetchData() async {
     _passList = await RepositoryService.getAllPasses();
+    setState(() {
+      _listLoaded = true;
+    });
   }
 
   @override
@@ -34,7 +37,9 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: Text(widget.title),
       ),
-      body: buildListView(),
+      body: _listLoaded
+          ? buildListView()
+          : Center(child: LinearProgressIndicator()),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () async {
@@ -49,9 +54,13 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildListView() {
     // return StreamBuilder(builder: builder);
-    return ListView.builder(
-      itemCount: _passList.length,
-      itemBuilder: (ctx, index) => PassCard(),
-    );
+    return _passList.length > 0
+        ? ListView.builder(
+            itemCount: _passList.length,
+            itemBuilder: (ctx, index) => PassCard(),
+          )
+        : Center(
+            child: Text("nothing here yet"),
+          );
   }
 }
