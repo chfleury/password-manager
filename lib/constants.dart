@@ -7,6 +7,8 @@ class Constants extends InheritedWidget {
   const Constants({Widget child, Key key}) : super(key: key, child: child);
 
   final String title = 'Password Manager';
+  final String addPass = 'Add a new Password';
+  final String done = 'Done';
 
   @override
   bool updateShouldNotify(Constants oldWidget) => false;

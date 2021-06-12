@@ -16,10 +16,3 @@ class PassCard extends StatelessWidget {
     );
   }
 }
-
-// showDialog(context: context, child:
-//     new AlertDialog(
-//       title: new Text("My Super title"),
-//       content: new Text("Hello World"),
-//     )
-// );

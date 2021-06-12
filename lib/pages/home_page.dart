@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/add_pass_dialog.dart';
 import '../models/pass.dart';
 import '../repository/service.dart';
 import '../widgets/pass_card.dart';
@@ -41,14 +42,24 @@ class _HomePageState extends State<HomePage> {
           ? buildListView()
           : Center(child: LinearProgressIndicator()),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () async {
-            await RepositoryService.addPass(null);
-
-            setState(() {
+        child: Icon(Icons.add),
+        onPressed: () => showDialog(
+          context: context,
+          builder: (_) => AddPassDialog(
+            () => setState(() {
+              print('callBack');
               _passList.add((Pass()));
-            });
-          }),
+            }),
+          ),
+        ),
+        // onPressed: () async {
+        //   await RepositoryService.addPass(null);
+
+        //   setState(() {
+        //     _passList.add((Pass()));
+        //   });
+        // }
+      ),
     );
   }
 
