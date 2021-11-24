@@ -8,13 +8,43 @@ class PassCard extends StatelessWidget {
   PassCard(this._pass);
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => showDialog(
-        context: context,
-        builder: (_) => PassDialog(),
-      ),
-      child: Card(
-        child: Text(_pass.password),
+    final size = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+      child: InkWell(
+        onTap: () => showDialog(
+          context: context,
+          builder: (_) => PassDialog(),
+        ),
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: SizedBox(
+                height: size.height * 0.15,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.vpn_key,
+                          color: Colors.green,
+                          size: size.width * 0.08,
+                        ),
+                        SizedBox(
+                          width: size.width * 0.1,
+                        ),
+                        Text(
+                          _pass.label,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ],
+                )),
+          ),
+        ),
       ),
     );
   }
