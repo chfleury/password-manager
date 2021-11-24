@@ -36,11 +36,19 @@ class AddPassDialog extends StatelessWidget {
                     _formKey.currentState.save();
 
                     // Add new pass to DB
-                    await RepositoryService.addPass(
-                        Pass(label: _label, password: _password));
+                    await RepositoryService.addPass(Pass(
+                      isProtected: false,
+                      icon: 1,
+                      hasLogin: false,
+                      label: _label,
+                      password: _password,
+                    ));
 
                     // Then pop dialog with new password to add in _passList
                     Navigator.of(context).pop(Pass(
+                      isProtected: false,
+                      icon: 1,
+                      hasLogin: false,
                       label: _label,
                       password: _password,
                     ));

@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../repository/database_creator.dart';
 
 class Pass {
@@ -9,7 +11,15 @@ class Pass {
   bool hasLogin;
   bool isProtected;
 
-  Pass({this.id, this.icon, this.label, this.password, this.isProtected});
+  Pass({
+    this.id,
+    @required this.icon,
+    @required this.label,
+    @required this.password,
+    @required this.isProtected,
+    @required this.hasLogin,
+    this.login,
+  });
 
   Pass.fromJson(Map<String, dynamic> json) {
     this.id = json[DatabaseCreator.id];

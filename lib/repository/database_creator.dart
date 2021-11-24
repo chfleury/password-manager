@@ -63,7 +63,6 @@ class DatabaseCreator {
   Future<void> initDatabase() async {
     final path = await getDatabasePath('pass_db');
     db = await openDatabase(path, version: 1, onCreate: onCreate);
-    print(db);
   }
 
   Future<void> onCreate(Database db, int version) async {
