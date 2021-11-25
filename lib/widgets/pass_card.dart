@@ -13,7 +13,8 @@ class PassCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
-
+    final icon = iconsList[_pass.icon];
+    print(_pass.icon);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
       child: InkWell(
@@ -29,8 +30,8 @@ class PassCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      iconsList[_pass.icon]['icon'],
-                      color: iconsList[_pass.icon]['color'],
+                      icon != null ? icon['icon'] : Icons.ac_unit,
+                      color: icon != null ? icon['color'] : Colors.purple,
                       size: size.width * 0.08,
                     ),
                     SizedBox(
