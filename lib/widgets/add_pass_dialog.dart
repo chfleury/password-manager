@@ -72,7 +72,6 @@ class _AddPassDialogState extends State<AddPassDialog> {
                       offAxisFraction: 1,
                       onSelectedItemChanged: (int a) {
                         _icon = a;
-                        print(_icon);
                       },
                       itemExtent: 100,
                       physics: FixedExtentScrollPhysics(),
@@ -130,8 +129,6 @@ class _AddPassDialogState extends State<AddPassDialog> {
                                     password: _password,
                                   );
 
-                            print('passIcon');
-                            print(pass.icon);
                             // Add new pass to DB
                             await RepositoryService.addPass(pass);
 
