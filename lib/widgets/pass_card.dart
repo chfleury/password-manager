@@ -29,10 +29,20 @@ class PassCard extends StatelessWidget {
                 height: size.height * 0.15,
                 child: Row(
                   children: [
-                    Icon(
-                      icon != null ? icon['icon'] : Icons.ac_unit,
-                      color: icon != null ? icon['color'] : Colors.purple,
-                      size: size.width * 0.08,
+                    Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(blurRadius: 0.5, color: Colors.grey)
+                          ],
+                          shape: BoxShape.circle,
+                          color: Theme.of(context).backgroundColor),
+                      child: Icon(
+                        icon != null ? icon['icon'] : Icons.ac_unit,
+                        color: icon != null ? icon['color'] : Colors.purple,
+                        size: size.width * 0.08,
+                      ),
                     ),
                     SizedBox(
                       width: size.width * 0.1,

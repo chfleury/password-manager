@@ -85,8 +85,8 @@ class _AddPassDialogState extends State<AddPassDialog> {
                                 BoxShadow(blurRadius: 0.5, color: Colors.grey)
                               ],
                               shape: BoxShape.circle,
-                              color:
-                                  darken(Theme.of(context).backgroundColor, 1)
+                              color: Constants.darken(
+                                  Theme.of(context).backgroundColor, 1)
                               // inner circle color
                               ),
                           child: RotatedBox(
@@ -145,12 +145,5 @@ class _AddPassDialogState extends State<AddPassDialog> {
         ),
       ),
     );
-  }
-
-  Color darken(Color c, [int percent = 10]) {
-    assert(1 <= percent && percent <= 100);
-    var f = 1 - percent / 100;
-    return Color.fromARGB(c.alpha, (c.red * f).round(), (c.green * f).round(),
-        (c.blue * f).round());
   }
 }
