@@ -7,6 +7,7 @@ import '../repository/service.dart';
 class AddPassDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     String _password;
     String _label;
     String _login;
@@ -47,6 +48,7 @@ class AddPassDialog extends StatelessWidget {
                   )),
               Container(
                 width: double.infinity,
+                height: size.height * 0.065,
                 child: ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
