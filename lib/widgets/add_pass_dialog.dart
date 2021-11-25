@@ -18,6 +18,7 @@ class _AddPassDialogState extends State<AddPassDialog> {
     String _password;
     String _label;
     String _login;
+    int _icon;
 
     List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
 
@@ -72,8 +73,7 @@ class _AddPassDialogState extends State<AddPassDialog> {
                     quarterTurns: 3,
                     child: new ListWheelScrollView(
                       offAxisFraction: 1,
-                      onSelectedItemChanged: (int a) =>
-                          print(a.toString() + 'ds'),
+                      onSelectedItemChanged: (int a) => _icon = a,
                       itemExtent: 100,
                       physics: FixedExtentScrollPhysics(),
                       children: List<Widget>.generate(
@@ -123,14 +123,14 @@ class _AddPassDialogState extends State<AddPassDialog> {
                             final pass = _login == null
                                 ? new Pass(
                                     isProtected: false,
-                                    icon: 1,
+                                    icon: _icon,
                                     hasLogin: false,
                                     label: _label,
                                     password: _password,
                                   )
                                 : new Pass(
                                     isProtected: false,
-                                    icon: 1,
+                                    icon: _icon,
                                     hasLogin: true,
                                     login: _login,
                                     label: _label,
