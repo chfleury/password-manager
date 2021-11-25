@@ -20,7 +20,7 @@ class PassCard extends StatelessWidget {
       child: InkWell(
         onTap: () => showDialog(
           context: context,
-          builder: (_) => PassDialog(),
+          builder: (_) => PassDialog(_pass),
         ),
         child: Card(
           child: Padding(
