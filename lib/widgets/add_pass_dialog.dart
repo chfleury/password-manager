@@ -6,7 +6,12 @@ import '../models/pass.dart';
 import '../constants.dart';
 import '../repository/service.dart';
 
-class AddPassDialog extends StatelessWidget {
+class AddPassDialog extends StatefulWidget {
+  @override
+  State<AddPassDialog> createState() => _AddPassDialogState();
+}
+
+class _AddPassDialogState extends State<AddPassDialog> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -14,7 +19,13 @@ class AddPassDialog extends StatelessWidget {
     String _label;
     String _login;
 
-    final iconsList = Constants.iconsList;
+    List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
+
+    List<bool> selecteds = [];
+
+    iconsList.forEach((element) {
+      selecteds.add(false);
+    });
 
     final _formKey = GlobalKey<FormState>();
     return Dialog(
@@ -50,6 +61,10 @@ class AddPassDialog extends StatelessWidget {
                 child: RotatedBox(
                   quarterTurns: 3,
                   child: new ListWheelScrollView(
+                    magnification: 1,
+                    offAxisFraction: 0.5,
+                    onSelectedItemChanged: (int a) =>
+                        print(a.toString() + 'ds'),
                     itemExtent: 100,
                     physics: FixedExtentScrollPhysics(),
                     children: List<Widget>.generate(
@@ -62,15 +77,17 @@ class AddPassDialog extends StatelessWidget {
                             BoxShadow(blurRadius: 0.5, color: Colors.grey)
                           ],
                           shape: BoxShape.circle,
-                          color: Theme.of(context)
-                              .backgroundColor, // inner circle color
+                          color: !selecteds[index]
+                              ? Theme.of(context).backgroundColor
+                              : Colors.green, // inner circle color
                         ),
                         child: RotatedBox(
-                            quarterTurns: 1,
-                            child: Icon(
-                              iconsList[index]['icon'],
-                              color: iconsList[index]['color'],
-                            )),
+                          quarterTurns: 1,
+                          child: Icon(
+                            iconsList[index]['icon'],
+                            color: iconsList[index]['color'],
+                          ),
+                        ),
                       ),
                     ),
                   ),
