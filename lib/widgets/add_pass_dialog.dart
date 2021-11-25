@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_brand_icons/flutter_brand_icons.dart';
-import 'package:list_wheel_scroll_view_x/list_wheel_scroll_view_x.dart';
 
 import '../models/pass.dart';
 import '../constants.dart';
