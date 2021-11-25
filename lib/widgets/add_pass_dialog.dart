@@ -41,9 +41,6 @@ class AddPassDialog extends StatelessWidget {
                 onSaved: (input) => _password = input,
                 decoration: InputDecoration(labelText: 'Password *'),
               ),
-              // Row(
-              //   children: [Icon(BrandIcons.windows)],
-              // ),
 
               Container(
                 height: 100,
@@ -55,15 +52,22 @@ class AddPassDialog extends StatelessWidget {
                     children: List<Widget>.generate(
                       20,
                       (index) => Container(
-                        height: 100,
-                        width: 100,
+                        height: 60,
+                        width: 60,
                         decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(blurRadius: 0.5, color: Colors.grey)
+                          ],
                           shape: BoxShape.circle,
                           color: Theme.of(context)
                               .backgroundColor, // inner circle color
                         ),
                         child: RotatedBox(
-                            quarterTurns: 1, child: Icon(BrandIcons.netflix)),
+                            quarterTurns: 1,
+                            child: Icon(
+                              BrandIcons.netflix,
+                              color: Colors.red,
+                            )),
                       ),
                     ),
                   ),
