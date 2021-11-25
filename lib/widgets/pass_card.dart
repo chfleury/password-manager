@@ -49,7 +49,7 @@ class PassCard extends StatelessWidget {
                           height: size.height * 0.05,
                         ),
                         Text(
-                          'example@mail.com',
+                          _pass.hasLogin ? _pass.login : '',
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
