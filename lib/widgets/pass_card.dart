@@ -22,22 +22,33 @@ class PassCard extends StatelessWidget {
             padding: const EdgeInsets.all(18.0),
             child: SizedBox(
                 height: size.height * 0.15,
-                child: Column(
+                child: Row(
                   children: [
-                    Row(
+                    Icon(
+                      Icons.vpn_key,
+                      color: Colors.green,
+                      size: size.width * 0.08,
+                    ),
+                    SizedBox(
+                      width: size.width * 0.1,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
-                          Icons.vpn_key,
-                          color: Colors.green,
-                          size: size.width * 0.08,
-                        ),
-                        SizedBox(
-                          width: size.width * 0.1,
-                        ),
                         Text(
                           _pass.label,
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.05,
+                        ),
+                        Text(
+                          'example@mail.com',
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey),
                         ),
                       ],
                     ),
