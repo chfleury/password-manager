@@ -13,6 +13,9 @@ class AddPassDialog extends StatelessWidget {
     String _password;
     String _label;
     String _login;
+
+    final iconsList = Constants.iconsList;
+
     final _formKey = GlobalKey<FormState>();
     return Dialog(
       child: Padding(
@@ -50,7 +53,7 @@ class AddPassDialog extends StatelessWidget {
                     itemExtent: 100,
                     physics: FixedExtentScrollPhysics(),
                     children: List<Widget>.generate(
-                      20,
+                      iconsList.length,
                       (index) => Container(
                         height: 60,
                         width: 60,
@@ -65,8 +68,8 @@ class AddPassDialog extends StatelessWidget {
                         child: RotatedBox(
                             quarterTurns: 1,
                             child: Icon(
-                              BrandIcons.netflix,
-                              color: Colors.red,
+                              iconsList[index]['icon'],
+                              color: iconsList[index]['color'],
                             )),
                       ),
                     ),
