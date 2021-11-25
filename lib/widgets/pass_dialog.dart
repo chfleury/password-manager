@@ -8,7 +8,8 @@ class PassDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Form(
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
           children: [
             Text(_pass.label),
           ],
