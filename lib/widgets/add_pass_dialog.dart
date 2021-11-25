@@ -50,7 +50,6 @@ class _AddPassDialogState extends State<AddPassDialog> {
                   onSaved: (input) => _password = input,
                   decoration: InputDecoration(labelText: 'Password *'),
                 ),
-
                 Padding(
                   padding: EdgeInsets.only(top: size.height * 0.035),
                   child: Align(
@@ -102,13 +101,6 @@ class _AddPassDialogState extends State<AddPassDialog> {
                     ),
                   ),
                 ),
-                // Align(
-                //     alignment: Alignment.centerLeft,
-                //     child: Padding(
-                //       padding: const EdgeInsets.only(top: 8.0, bottom: 4),
-                //       child: TextButton(
-                //           onPressed: () {}, child: Text("Press to pick an Icon")),
-                //     )),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Container(
