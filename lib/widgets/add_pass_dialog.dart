@@ -11,16 +11,15 @@ class AddPassDialog extends StatefulWidget {
 
 class _AddPassDialogState extends State<AddPassDialog> {
   final _formKey = GlobalKey<FormState>();
+  int _icon = 0;
+  String _password;
+  String _label;
+  String _login;
+  List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    String _password;
-    String _label;
-    String _login;
-    int _icon;
-
-    List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
 
     return Dialog(
       child: SingleChildScrollView(
@@ -53,7 +52,6 @@ class _AddPassDialogState extends State<AddPassDialog> {
                 Padding(
                   padding: EdgeInsets.only(top: size.height * 0.035),
                   child: Align(
-                    // alignment: Alignment.centerLeft,
                     child: Text(
                       'Pick an Icon',
                       style: TextStyle(
@@ -72,7 +70,10 @@ class _AddPassDialogState extends State<AddPassDialog> {
                     quarterTurns: 3,
                     child: new ListWheelScrollView(
                       offAxisFraction: 1,
-                      onSelectedItemChanged: (int a) => _icon = a,
+                      onSelectedItemChanged: (int a) {
+                        _icon = a;
+                        print(_icon);
+                      },
                       itemExtent: 100,
                       physics: FixedExtentScrollPhysics(),
                       children: List<Widget>.generate(
@@ -129,6 +130,8 @@ class _AddPassDialogState extends State<AddPassDialog> {
                                     password: _password,
                                   );
 
+                            print('passIcon');
+                            print(pass.icon);
                             // Add new pass to DB
                             await RepositoryService.addPass(pass);
 
