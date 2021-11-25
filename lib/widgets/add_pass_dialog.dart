@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_brand_icons/flutter_brand_icons.dart';
+import 'package:list_wheel_scroll_view_x/list_wheel_scroll_view_x.dart';
 
 import '../models/pass.dart';
 import '../constants.dart';
@@ -39,13 +41,41 @@ class AddPassDialog extends StatelessWidget {
                 onSaved: (input) => _password = input,
                 decoration: InputDecoration(labelText: 'Password *'),
               ),
-              Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0, bottom: 4),
-                    child: TextButton(
-                        onPressed: () {}, child: Text("Press to pick an Icon")),
-                  )),
+              // Row(
+              //   children: [Icon(BrandIcons.windows)],
+              // ),
+
+              Container(
+                height: 100,
+                child: RotatedBox(
+                  quarterTurns: 3,
+                  child: new ListWheelScrollView(
+                    itemExtent: 100,
+                    physics: FixedExtentScrollPhysics(),
+                    children: List<Widget>.generate(
+                      20,
+                      (index) => Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context)
+                              .backgroundColor, // inner circle color
+                        ),
+                        child: RotatedBox(
+                            quarterTurns: 1, child: Icon(BrandIcons.netflix)),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // Align(
+              //     alignment: Alignment.centerLeft,
+              //     child: Padding(
+              //       padding: const EdgeInsets.only(top: 8.0, bottom: 4),
+              //       child: TextButton(
+              //           onPressed: () {}, child: Text("Press to pick an Icon")),
+              //     )),
               Container(
                 width: double.infinity,
                 height: size.height * 0.065,
