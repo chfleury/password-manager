@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_brand_icons/flutter_brand_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../models/pass.dart';
 import '../widgets/pass_dialog.dart';
@@ -25,8 +27,8 @@ class PassCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.vpn_key,
-                      color: Colors.green,
+                      BrandIcons.netflix,
+                      color: Colors.red,
                       size: size.width * 0.08,
                     ),
                     SizedBox(
