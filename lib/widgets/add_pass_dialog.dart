@@ -45,23 +45,28 @@ class AddPassDialog extends StatelessWidget {
                       // Save the form
                       _formKey.currentState.save();
 
+                      final pass = _login == null
+                          ? new Pass(
+                              isProtected: false,
+                              icon: 1,
+                              hasLogin: false,
+                              label: _label,
+                              password: _password,
+                            )
+                          : new Pass(
+                              isProtected: false,
+                              icon: 1,
+                              hasLogin: true,
+                              login: _login,
+                              label: _label,
+                              password: _password,
+                            );
+
                       // Add new pass to DB
-                      await RepositoryService.addPass(Pass(
-                        isProtected: false,
-                        icon: 1,
-                        hasLogin: false,
-                        label: _label,
-                        password: _password,
-                      ));
+                      await RepositoryService.addPass(pass);
 
                       // Then pop dialog with new password to add in _passList
-                      Navigator.of(context).pop(Pass(
-                        isProtected: false,
-                        icon: 1,
-                        hasLogin: false,
-                        label: _label,
-                        password: _password,
-                      ));
+                      Navigator.of(context).pop(pass);
                     }
                   },
                   child: Text(Constants.of(context).done)),
