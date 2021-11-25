@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_brand_icons/flutter_brand_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../constants.dart';
 import '../models/pass.dart';
 import '../widgets/pass_dialog.dart';
 
@@ -11,6 +12,7 @@ class PassCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
@@ -27,8 +29,8 @@ class PassCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      BrandIcons.netflix,
-                      color: Colors.red,
+                      iconsList[_pass.icon]['icon'],
+                      color: iconsList[_pass.icon]['color'],
                       size: size.width * 0.08,
                     ),
                     SizedBox(
