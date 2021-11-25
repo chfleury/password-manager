@@ -37,39 +37,45 @@ class AddPassDialog extends StatelessWidget {
               ),
               Align(
                   alignment: Alignment.centerLeft,
-                  child: TextButton(
-                      onPressed: () {}, child: Text("Pick an Icon"))),
-              ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState.validate()) {
-                      // Save the form
-                      _formKey.currentState.save();
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 4),
+                    child: TextButton(
+                        onPressed: () {}, child: Text("Press to pick an Icon")),
+                  )),
+              Container(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState.validate()) {
+                        // Save the form
+                        _formKey.currentState.save();
 
-                      final pass = _login == null
-                          ? new Pass(
-                              isProtected: false,
-                              icon: 1,
-                              hasLogin: false,
-                              label: _label,
-                              password: _password,
-                            )
-                          : new Pass(
-                              isProtected: false,
-                              icon: 1,
-                              hasLogin: true,
-                              login: _login,
-                              label: _label,
-                              password: _password,
-                            );
+                        final pass = _login == null
+                            ? new Pass(
+                                isProtected: false,
+                                icon: 1,
+                                hasLogin: false,
+                                label: _label,
+                                password: _password,
+                              )
+                            : new Pass(
+                                isProtected: false,
+                                icon: 1,
+                                hasLogin: true,
+                                login: _login,
+                                label: _label,
+                                password: _password,
+                              );
 
-                      // Add new pass to DB
-                      await RepositoryService.addPass(pass);
+                        // Add new pass to DB
+                        await RepositoryService.addPass(pass);
 
-                      // Then pop dialog with new password to add in _passList
-                      Navigator.of(context).pop(pass);
-                    }
-                  },
-                  child: Text(Constants.of(context).done)),
+                        // Then pop dialog with new password to add in _passList
+                        Navigator.of(context).pop(pass);
+                      }
+                    },
+                    child: Text(Constants.of(context).done)),
+              ),
             ],
           ),
         ),
