@@ -61,7 +61,7 @@ class _AddPassDialogState extends State<AddPassDialog> {
                   child: Align(
                     // alignment: Alignment.centerLeft,
                     child: Text(
-                      'Pick an Icon:',
+                      'Pick an Icon',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),
