@@ -21,12 +21,6 @@ class _AddPassDialogState extends State<AddPassDialog> {
 
     List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
 
-    List<bool> selecteds = [];
-
-    iconsList.forEach((element) {
-      selecteds.add(false);
-    });
-
     return Dialog(
       child: SingleChildScrollView(
         child: Padding(
@@ -88,14 +82,14 @@ class _AddPassDialogState extends State<AddPassDialog> {
                           height: 60,
                           width: 60,
                           decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(blurRadius: 0.5, color: Colors.grey)
-                            ],
-                            shape: BoxShape.circle,
-                            color: !selecteds[index]
-                                ? darken(Theme.of(context).backgroundColor, 1)
-                                : Colors.green, // inner circle color
-                          ),
+                              boxShadow: [
+                                BoxShadow(blurRadius: 0.5, color: Colors.grey)
+                              ],
+                              shape: BoxShape.circle,
+                              color:
+                                  darken(Theme.of(context).backgroundColor, 1)
+                              // inner circle color
+                              ),
                           child: RotatedBox(
                             quarterTurns: 1,
                             child: Icon(
