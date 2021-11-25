@@ -19,7 +19,10 @@ class AddPassDialog extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(Constants.of(context).addPass),
+              Text(
+                Constants.of(context).addPass,
+                style: TextStyle(fontSize: 18),
+              ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Label *'),
                 onSaved: (input) => _label = input,
