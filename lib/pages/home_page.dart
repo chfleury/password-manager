@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.title),
       ),
       body: _listLoaded
-          ? buildListView()
+          ? buildListView(size)
           : Center(child: LinearProgressIndicator()),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
@@ -58,14 +59,38 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildListView() {
+  Widget buildListView(size) {
     return _passList.length > 0
         ? ListView.builder(
             itemCount: _passList.length,
             itemBuilder: (ctx, index) => PassCard(_passList[index]),
           )
-        : Center(
-            child: Text("nothing here yet"),
+        : SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
+                  child: Center(
+                    child: Text(
+                      "Nothing here yet!",
+                      style: TextStyle(fontSize: size.height * 0.028),
+                    ),
+                  ),
+                ),
+                Container(
+                    height: size.height * 0.2,
+                    child: Image.asset('assets/file.png')),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
+                  child: Center(
+                    child: Text(
+                      "Please, add a new password",
+                      style: TextStyle(fontSize: size.height * 0.021),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           );
   }
 }

@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       theme: ThemeData(
+        fontFamily: 'roboto',
         backgroundColor: Color(0xfff0f0f7),
         primarySwatch: Colors.pink,
       ),
