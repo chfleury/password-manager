@@ -15,6 +15,7 @@ class _AddPassDialogState extends State<AddPassDialog> {
   String _password;
   String _label;
   String _login;
+  bool _passwordVisible = false;
   List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
 
   @override
@@ -43,12 +44,23 @@ class _AddPassDialogState extends State<AddPassDialog> {
                   onSaved: (input) => _login = input,
                 ),
                 TextFormField(
-                  validator: (input) => input.length < 3
-                      ? 'Password must contain at least 3 characters'
-                      : null,
-                  onSaved: (input) => _password = input,
-                  decoration: InputDecoration(labelText: 'Password *'),
-                ),
+                    validator: (input) => input.length < 3
+                        ? 'Password must contain at least 3 characters'
+                        : null,
+                    onSaved: (input) => _password = input,
+                    decoration: InputDecoration(
+                        labelText: 'Password *',
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _passwordVisible = !_passwordVisible;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.remove_red_eye,
+                              color: Colors.grey,
+                            ))),
+                    obscureText: !_passwordVisible),
                 Padding(
                   padding: EdgeInsets.only(top: size.height * 0.035),
                   child: Align(
