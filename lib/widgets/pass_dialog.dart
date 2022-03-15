@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:password_manager/constants.dart';
 import 'package:password_manager/models/pass.dart';
 
 class PassDialog extends StatelessWidget {
@@ -6,12 +7,86 @@ class PassDialog extends StatelessWidget {
   PassDialog(this._pass);
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
+    final icon = _pass.icon != null
+        ? iconsList[_pass.icon]
+        : {'icon': Icons.vpn_key, "color": Colors.black};
+
     return Dialog(
       child: Form(
         child: ListView(
           shrinkWrap: true,
           children: [
-            Text(_pass.label),
+            Padding(
+              padding: EdgeInsets.only(
+                top: size.height * 0.05,
+                left: size.width * 0.05,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(blurRadius: 0.5, color: Colors.grey)
+                        ],
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).backgroundColor),
+                    child: Icon(
+                      icon != null ? icon['icon'] : Icons.ac_unit,
+                      color: icon != null ? icon['color'] : Colors.purple,
+                      size: size.width * 0.08,
+                    ),
+                  ),
+                  SizedBox(
+                    width: size.width * 0.05,
+                  ),
+                  Text(
+                    _pass.label,
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: size.width * 0.1,
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: size.height * 0.05,
+                bottom: size.height * 0.03,
+                left: size.width * 0.05,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _pass.hasLogin
+                      ? Padding(
+                          padding: EdgeInsets.only(bottom: size.height * 0.01),
+                          child: Text(
+                            _pass.login,
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.grey),
+                          ),
+                        )
+                      : Container(),
+                  Text(
+                    '********',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

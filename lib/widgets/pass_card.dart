@@ -26,60 +26,61 @@ class PassCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: SizedBox(
-                height: size.height * 0.15,
-                child: Row(
-                  children: [
-                    Container(
-                      height: 60,
-                      width: 60,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(blurRadius: 0.5, color: Colors.grey)
-                          ],
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).backgroundColor),
-                      child: Icon(
-                        icon != null ? icon['icon'] : Icons.ac_unit,
-                        color: icon != null ? icon['color'] : Colors.purple,
-                        size: size.width * 0.08,
+              height: size.height * 0.15,
+              child: Row(
+                children: [
+                  Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(blurRadius: 0.5, color: Colors.grey)
+                        ],
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).backgroundColor),
+                    child: Icon(
+                      icon != null ? icon['icon'] : Icons.ac_unit,
+                      color: icon != null ? icon['color'] : Colors.purple,
+                      size: size.width * 0.08,
+                    ),
+                  ),
+                  SizedBox(
+                    width: size.width * 0.1,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        _pass.label,
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.w600),
                       ),
-                    ),
-                    SizedBox(
-                      width: size.width * 0.1,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          _pass.label,
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w600),
-                        ),
-                        _pass.hasLogin
-                            ? Padding(
-                                padding:
-                                    EdgeInsets.only(bottom: size.height * 0.01),
-                                child: Text(
-                                  _pass.login,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.grey),
-                                ),
-                              )
-                            : Container(),
-                        Text(
-                          '********',
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                  ],
-                )),
+                      _pass.hasLogin
+                          ? Padding(
+                              padding:
+                                  EdgeInsets.only(bottom: size.height * 0.01),
+                              child: Text(
+                                _pass.login,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.grey),
+                              ),
+                            )
+                          : Container(),
+                      Text(
+                        '********',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
