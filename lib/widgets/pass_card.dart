@@ -49,17 +49,28 @@ class PassCard extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           _pass.label,
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(
-                          height: size.height * 0.05,
-                        ),
+                        _pass.hasLogin
+                            ? Padding(
+                                padding:
+                                    EdgeInsets.only(bottom: size.height * 0.01),
+                                child: Text(
+                                  _pass.login,
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.grey),
+                                ),
+                              )
+                            : Container(),
                         Text(
-                          _pass.hasLogin ? _pass.login : '',
+                          '********',
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
