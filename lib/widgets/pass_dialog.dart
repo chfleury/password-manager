@@ -2,15 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:password_manager/constants.dart';
 import 'package:password_manager/models/pass.dart';
 
-class PassDialog extends StatelessWidget {
+class PassDialog extends StatefulWidget {
   final Pass _pass;
   PassDialog(this._pass);
+
+  @override
+  State<PassDialog> createState() => _PassDialogState();
+}
+
+class _PassDialogState extends State<PassDialog> {
+  String passText = '********';
+
+  void _showPass() {
+    setState(() {
+      passText = widget._pass.password;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     List<Map<String, dynamic>> iconsList = new List.from(Constants.iconsList);
-    final icon = _pass.icon != null
-        ? iconsList[_pass.icon]
+    final icon = widget._pass.icon != null
+        ? iconsList[widget._pass.icon]
         : {'icon': Icons.vpn_key, "color": Colors.black};
 
     return Dialog(
@@ -46,7 +60,7 @@ class PassDialog extends StatelessWidget {
                     width: size.width * 0.05,
                   ),
                   Text(
-                    _pass.label,
+                    widget._pass.label,
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                   ),
                 ],
@@ -65,24 +79,34 @@ class PassDialog extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _pass.hasLogin
+                  widget._pass.hasLogin
                       ? Padding(
                           padding: EdgeInsets.only(bottom: size.height * 0.01),
                           child: Text(
-                            _pass.login,
+                            widget._pass.login,
                             style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.grey),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         )
                       : Container(),
-                  Text(
-                    '********',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey),
+                  Row(
+                    children: [
+                      Text(
+                        passText,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: _showPass,
+                          icon: Icon(
+                            Icons.remove_red_eye,
+                            color: Colors.grey,
+                          ))
+                    ],
                   ),
                 ],
               ),
