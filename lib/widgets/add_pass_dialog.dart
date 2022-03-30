@@ -40,7 +40,7 @@ class _AddPassDialogState extends State<AddPassDialog> {
                   onSaved: (input) => _label = input,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Username (optional)'),
+                  decoration: InputDecoration(labelText: 'Username'),
                   onSaved: (input) => _login = input,
                 ),
                 TextFormField(
