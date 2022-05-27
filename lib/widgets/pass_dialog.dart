@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:password_manager/constants.dart';
 import 'package:password_manager/models/pass.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PassDialog extends StatefulWidget {
   final Pass _pass;
@@ -13,7 +15,23 @@ class PassDialog extends StatefulWidget {
 class _PassDialogState extends State<PassDialog> {
   String passText = '********';
 
+  void copyToClipboard() {
+    Clipboard.setData(ClipboardData(text: widget._pass.password));
+
+    Fluttertoast.showToast(
+      msg: "Password copied to clipboard",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.green,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
   void _showPass() {
+    copyToClipboard();
+
     setState(() {
       passText = widget._pass.password;
     });
